@@ -1,16 +1,21 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
-const Share = () => {
+const Share = ({ navigation }) => {
+  console.log('-- share --');
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}
-    >
-      <Text>Share</Text>
+    <View>
+      <ScrollView
+        contentContainerStyle={{
+          marginTop: 20,
+          flexGrow: 1,
+          alignItems: 'center',
+        }}
+      >
+        <Text>다른글</Text>
+      </ScrollView>
     </View>
   );
 };

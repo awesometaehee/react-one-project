@@ -15,6 +15,7 @@ import Detail from './component/Detail';
 
 const Tab = createBottomTabNavigator();
 const ListStack = createStackNavigator();
+const ShareStack = createStackNavigator();
 
 const ListStackScreen = () => {
   return (
@@ -22,7 +23,7 @@ const ListStackScreen = () => {
       <ListStack.Screen
         name="List"
         component={List}
-        options={{ title: '글목록' }}
+        options={{ title: '모아보기' }}
       />
       <ListStack.Screen
         name="Detail"
@@ -33,15 +34,32 @@ const ListStackScreen = () => {
   );
 };
 
+const ShareStackScreen = () => {
+  return (
+    <ShareStack.Navigator>
+      <ShareStack.Screen
+        name="Share"
+        component={Share}
+        options={{ title: '다른이야기' }}
+      />
+      <ShareStack.Screen
+        name="Detail"
+        component={Detail}
+        options={{ title: '상세보기' }}
+      />
+    </ShareStack.Navigator>
+  );
+};
+
 const screenOptions = ({ route }) => ({
   tabBarIcon: ({ focused, color, size }) => {
     let iconName;
 
     switch (route.name) {
-      case '글목록':
+      case '모아보기':
         iconName = focused ? 'document-text' : 'document-text-outline';
         break;
-      case '글공유':
+      case '다른이야기':
         iconName = focused ? 'people' : 'people-outline';
         break;
     }
@@ -63,8 +81,8 @@ export default function App() {
           screenOptions={screenOptions}
           tabBarOptions={tabBarOptions}
         >
-          <Tab.Screen name="글목록" component={ListStackScreen} />
-          <Tab.Screen name="글공유" component={Share} />
+          <Tab.Screen name="모아보기" component={ListStackScreen} />
+          <Tab.Screen name="다른이야기" component={ShareStackScreen} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

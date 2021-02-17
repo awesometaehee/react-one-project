@@ -1,21 +1,48 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+import { LISTDATA } from '../Shared/list';
 
-const Detail = ({ route, navigation }) => {
+import { useDispatch, useSelector } from 'react-redux';
+import { addTask, removeTask } from '../redux/actions/tasks';
+
+const Detail = ({ route }) => {
   console.log('-- detail --');
   console.log(route.params);
 
+  const id = route.params.id;
+  const item = LISTDATA.filter((item) => item.id == id)[0];
+  console.log(item);
+
   return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: 'center',
+    <ScrollView
+      contentContainerStyle={{
+        marginTop: 20,
+        flexGrow: 1,
         alignItems: 'center',
       }}
     >
-      <Text>Detail</Text>
-    </View>
+      <View style={styles.container}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Text style={styles.desc}>{item.description}</Text>
+      </View>
+    </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: '90%',
+  },
+  title: {
+    fontSize: 25,
+    color: '#222',
+    marginBottom: 30,
+  },
+  desc: {
+    fontSize: 18,
+    color: '#222',
+  },
+});
 
 export default Detail;
