@@ -1,12 +1,16 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-import { LISTDATA } from '../Shared/list';
+import { View, StyleSheet, Text, Button } from 'react-native';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeTask } from '../redux/actions/tasks';
+import { IconButton, Colors } from 'react-native-paper';
 
-const List = ({ navigation }) => {
-  const list = LISTDATA;
-  console.log('-- list --');
-  console.log(list);
+const Task = ({ navigation }) => {
+  const tasks = useSelector((state) => state.tasks);
+  console.log('-- tasks redux state --');
+  console.log(tasks);
+
+  const dispatch = useDispatch();
 
   return (
     <ScrollView
@@ -16,7 +20,7 @@ const List = ({ navigation }) => {
         alignItems: 'center',
       }}
     >
-      {list.map((item, i) => (
+      {tasks.map((item, i) => (
         <TouchableOpacity
           style={styles.container}
           key={i}
@@ -55,4 +59,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default List;
+export default Task;
