@@ -1,41 +1,30 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import ActionButton from 'react-native-action-button';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const home = () => {
+const home = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
         <Text>Hi!</Text>
       </ScrollView>
-      <ActionButton buttonColor="rgba(231,76,60,1)">
-        <ActionButton.Item
-          buttonColor="#9b59b6"
-          title="New Task"
-          onPress={() => console.log('notes tapped!')}
-        >
-          <Ionicons name="md-create" style={styles.actionButtonIcon} />
-        </ActionButton.Item>
-        <ActionButton.Item
-          buttonColor="#3498db"
-          title="Notifications"
-          onPress={() => {}}
-        >
-          <Ionicons
-            name="md-notifications-off"
-            style={styles.actionButtonIcon}
-          />
-        </ActionButton.Item>
-        <ActionButton.Item
-          buttonColor="#1abc9c"
-          title="All Tasks"
-          onPress={() => {}}
-        >
-          <Ionicons name="md-done-all" style={styles.actionButtonIcon} />
-        </ActionButton.Item>
-      </ActionButton>
+      <TouchableOpacity
+        style={styles.float}
+        onPress={() => {
+          navigation.navigate('Write');
+        }}
+      >
+        <ImageBackground
+          source={require('../assets/images/pen.png')}
+          style={styles.image}
+        ></ImageBackground>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -44,10 +33,26 @@ const styles = StyleSheet.create({
   float: {
     width: 50,
     height: 50,
-    backgroundColor: '#222',
+    backgroundColor: '#fff',
     position: 'absolute',
-    bottom: 50,
-    right: 50,
+    bottom: 20,
+    right: 20,
+    borderRadius: 25,
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 4,
+    },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 8,
+  },
+  image: {
+    width: 25,
+    height: 25,
   },
 });
 

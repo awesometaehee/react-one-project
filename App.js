@@ -36,7 +36,7 @@ const HomeStackScreen = () => {
         options={{ title: 'home' }}
       />
       <HomeStack.Screen
-        name="글작성"
+        name="Write"
         component={Write}
         options={{ title: '글작성' }}
       />

@@ -25,7 +25,7 @@ const List = ({ navigation }) => {
           }}
         >
           <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.description}</Text>
+          <Text style={styles.desc}>{item.description}</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
@@ -52,6 +52,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#222',
+    fontFamily: 'Nanum-Myeongjo',
+  },
+  desc: {
+    fontFamily: 'Nanum-Myeongjo',
   },
 });
 
