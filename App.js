@@ -1,5 +1,5 @@
 import React from 'react';
-import { LogBox } from 'react-native';
+import { Button } from 'react-native';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -18,8 +18,6 @@ import Write from './component/Write';
 import Task from './component/Task';
 import Detail from './component/Detail';
 
-LogBox.ignoreLogs(['Animated: `useNativeDriver` was not specified.']);
-
 const store = createStore(rootReducer);
 
 const Tab = createBottomTabNavigator();
@@ -33,12 +31,16 @@ const HomeStackScreen = () => {
       <HomeStack.Screen
         name="Home"
         component={Home}
-        options={{ title: 'home' }}
+        options={{
+          title: 'Home',
+        }}
       />
       <HomeStack.Screen
         name="Write"
         component={Write}
-        options={{ title: '글작성' }}
+        options={{
+          title: 'Your Story',
+        }}
       />
     </HomeStack.Navigator>
   );
@@ -50,12 +52,12 @@ const ListStackScreen = () => {
       <ListStack.Screen
         name="List"
         component={List}
-        options={{ title: '모두이야기' }}
+        options={{ title: 'Story' }}
       />
       <ListStack.Screen
         name="Detail"
         component={Detail}
-        options={{ title: '상세보기' }}
+        options={{ title: 'Details' }}
       />
     </ListStack.Navigator>
   );
@@ -67,12 +69,12 @@ const TaskStackScreen = () => {
       <TaskStack.Screen
         name="Task"
         component={Task}
-        options={{ title: '담아두기' }}
+        options={{ title: 'Add' }}
       />
       <TaskStack.Screen
         name="Detail"
         component={Detail}
-        options={{ title: '상세보기' }}
+        options={{ title: 'Details' }}
       />
     </TaskStack.Navigator>
   );
@@ -86,11 +88,11 @@ const screenOptions = ({ route }) => ({
       case 'home':
         iconName = focused ? 'home' : 'home-outline';
         break;
-      case '모두이야기':
+      case 'story':
         iconName = focused ? 'document-text' : 'document-text-outline';
         break;
-      case '담아두기':
-        iconName = focused ? 'people' : 'people-outline';
+      case 'add':
+        iconName = focused ? 'file-tray-full' : 'file-tray-full-outline';
         break;
     }
 
@@ -113,8 +115,8 @@ export default function App() {
             tabBarOptions={tabBarOptions}
           >
             <Tab.Screen name="home" component={HomeStackScreen} />
-            <Tab.Screen name="모두이야기" component={ListStackScreen} />
-            <Tab.Screen name="담아두기" component={TaskStackScreen} />
+            <Tab.Screen name="story" component={ListStackScreen} />
+            <Tab.Screen name="add" component={TaskStackScreen} />
           </Tab.Navigator>
         </NavigationContainer>
       </SafeAreaProvider>

@@ -53,7 +53,7 @@ const Detail = ({ route }) => {
             title="담기"
             buttonStyle={{
               borderRadius: 0,
-              backgroundColor: 'tomato',
+              backgroundColor: '#ed8936',
             }}
             onPress={() => {
               dispatch(addTask(item));
@@ -72,12 +72,12 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   title: {
-    fontSize: 26,
+    fontSize: 18,
     color: '#222',
     marginBottom: 30,
   },
   desc: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#222',
   },
 });

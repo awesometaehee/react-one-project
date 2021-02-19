@@ -1,14 +1,13 @@
 import React from 'react';
-import { View, Text, TextInput, StyleSheet } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
+import { IconButton, Colors } from 'react-native-paper';
 
 const UselessTextInput = (prop) => {
   return <TextInput {...prop} editable maxLength={1000} />;
 };
 
 const Write = () => {
-  const [value, onChangeText] = React.useState('내용을 입력하세요');
-
   return (
     <ScrollView
       contentContainerStyle={{
@@ -18,14 +17,24 @@ const Write = () => {
       }}
     >
       <View style={styles.container}>
-        <TextInput placeholder="제목" style={styles.title} />
-        <UselessTextInput
-          multiline
-          numberOfLines={4}
-          onChangeText={(text) => onChangeText(text)}
-          value={value}
-          style={styles.subtitle}
-        />
+        <View>
+          <TextInput placeholder="제목" style={styles.title} />
+          <UselessTextInput
+            placeholder="내용을 입력하세요"
+            multiline
+            numberOfLines={4}
+            style={styles.subtitle}
+          />
+        </View>
+        <View>
+          <IconButton
+            icon="check"
+            size={30}
+            color="#28bd8b"
+            onPress={() => alert('Complete')}
+            style={{ marginLeft: 'auto' }}
+          />
+        </View>
       </View>
     </ScrollView>
   );
@@ -34,17 +43,19 @@ const Write = () => {
 const styles = StyleSheet.create({
   container: {
     width: '90%',
-    marginBottom: 50,
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   title: {
-    fontSize: 26,
+    fontSize: 18,
     color: '#222',
     marginBottom: 30,
     borderBottomWidth: 1,
     borderBottomColor: '#c4c4c4',
   },
   subtitle: {
-    fontSize: 18,
+    fontSize: 16,
     color: '#222',
   },
 });
