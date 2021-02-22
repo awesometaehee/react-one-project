@@ -12,7 +12,7 @@ const home = ({ navigation }) => {
   return (
     <View style={{ flex: 1 }}>
       <ScrollView>
-        <Text>Hi!</Text>
+        <Text>memo list</Text>
       </ScrollView>
       <TouchableOpacity
         style={styles.float}
