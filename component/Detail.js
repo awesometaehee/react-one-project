@@ -39,7 +39,7 @@ const Detail = ({ route }) => {
         </View>
         {isExistedTask ? (
           <Button
-            title="삭제"
+            title="Delete"
             buttonStyle={{
               borderRadius: 0,
               backgroundColor: 'gray',
@@ -50,7 +50,7 @@ const Detail = ({ route }) => {
           />
         ) : (
           <Button
-            title="담기"
+            title="Add"
             buttonStyle={{
               borderRadius: 0,
               backgroundColor: '#ed8936',
