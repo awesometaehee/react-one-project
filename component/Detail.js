@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Button } from 'react-native-elements';
-import { LISTDATA } from '../Shared/list';
+// import { LISTDATA } from '../Shared/list';
+import api from '../api/list';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask, removeTask } from '../redux/actions/tasks';
@@ -12,8 +13,9 @@ const Detail = ({ route }) => {
   console.log(route.params);
 
   const id = route.params.id;
-  const item = LISTDATA.filter((item) => item.id == id)[0];
-  console.log(item);
+  // const item = LISTDATA.filter((item) => item.id == id)[0];
+
+  const [item, setItem] = useState({});
 
   const tasks = useSelector((state) => state.tasks);
   console.log('-- tasks --');
@@ -23,6 +25,16 @@ const Detail = ({ route }) => {
     tasks.filter((item) => item.id == id).length > 0 ? true : false;
 
   const dispatch = useDispatch();
+
+  const getDetail = useCallback(async () => {
+    const result = await api.get(id);
+    console.log(result.data);
+    setItem(result.data);
+  }, []);
+
+  useEffect(() => {
+    getDetail();
+  }, []);
 
   return (
     <ScrollView

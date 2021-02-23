@@ -28,8 +28,10 @@ const Task = ({ navigation }) => {
             navigation.navigate('Detail', { id: item.id });
           }}
         >
-          <Text style={styles.title}>{item.title}</Text>
-          <Text>{item.description}</Text>
+          <Text numberOfLines={1} style={styles.title}>
+            {item.title}
+          </Text>
+          <Text numberOfLines={3}>{item.description}</Text>
         </TouchableOpacity>
       ))}
     </ScrollView>

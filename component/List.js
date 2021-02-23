@@ -1,12 +1,28 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import { LISTDATA } from '../Shared/list';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import api from '../api/list';
 
 const List = ({ navigation }) => {
-  const list = LISTDATA;
-  console.log('-- list --');
-  console.log(list);
+  // const list = LISTDATA;
+
+  const [list, setList] = useState([]);
+
+  const getList = useCallback(async () => {
+    const result = await api.list();
+    console.log(result.data);
+    setList(result.data);
+  }, []);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      console.log('-- focus --');
+      getList();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
 
   return (
     <ScrollView
@@ -24,8 +40,12 @@ const List = ({ navigation }) => {
             navigation.navigate('Detail', { id: item.id });
           }}
         >
-          <Text style={styles.title}>{item.title}</Text>
-          <Text style={styles.desc}>{item.description}</Text>
+          <Text numberOfLines={1} style={styles.title}>
+            {item.title}
+          </Text>
+          <Text numberOfLines={3} style={styles.desc}>
+            {item.description}
+          </Text>
         </TouchableOpacity>
       ))}
     </ScrollView>
