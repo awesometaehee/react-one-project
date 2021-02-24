@@ -72,10 +72,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginBottom: 20,
     color: '#222',
-    fontFamily: 'Nanum-Myeongjo',
-  },
-  desc: {
-    fontFamily: 'Nanum-Myeongjo',
   },
 });
 

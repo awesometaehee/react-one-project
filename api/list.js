@@ -8,4 +8,6 @@ export default {
   get: (id) => axios.get(`${baseUrl}/list/${id}`),
   // GET http://....:3000/list?q=keyword
   search: (keyword) => axios.get(`${baseUrl}/list?q=${keyword}`),
+  // PUT http://....:3000/list/:id
+  put: (id) => axios.put(`${baseUrl}/list/${id}`),
 };
