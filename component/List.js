@@ -1,29 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React from 'react';
 import { View, StyleSheet, Text } from 'react-native';
-import { LISTDATA } from '../Shared/list';
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
-import api from '../api/list';
 
-const List = ({ navigation }) => {
-  // const list = LISTDATA;
-
-  const [list, setList] = useState([]);
-
-  const getList = useCallback(async () => {
-    const result = await api.list();
-    console.log(result.data);
-    setList(result.data);
-  }, []);
-
-  useEffect(() => {
-    const unsubscribe = navigation.addListener('focus', () => {
-      console.log('-- focus --');
-      getList();
-    });
-
-    return unsubscribe;
-  }, [navigation]);
-
+const List = ({ navigation, list }) => {
   return (
     <ScrollView
       contentContainerStyle={{

@@ -11,21 +11,9 @@ import Swipeable from 'react-native-gesture-handler/Swipeable';
 import DeleteButton from './DeleteButton';
 import Write from './Write';
 
-const dummy = [
-  {
-    id: 1,
-    title: 'HHIHI',
-    description: '그런 사람인걸 우리가 지금까지 나눈말 뻔한 거짓말은 아냐',
-  },
-  {
-    id: 2,
-    title: 'HHIHI',
-    description:
-      '시간은 자꾸만 재촉하네요 어른이 되기엔 아직 이른 저를 날마다 보채요',
-  },
-];
-
 const home = ({ navigation }) => {
+  const [item, setItem] = useState({});
+
   return (
     <View style={{ flex: 1 }}>
       <ScrollView
@@ -35,14 +23,14 @@ const home = ({ navigation }) => {
           alignItems: 'center',
         }}
       >
-        <Swipeable renderRightActions={() => <DeleteButton />}>
-          <TouchableOpacity style={styles.container}>
-            <Text numberOfLines={1} style={styles.title}>
-              HIHIHI
-            </Text>
-            <Text numberOfLines={3}>HIHIHIHIHIHI</Text>
-          </TouchableOpacity>
-        </Swipeable>
+        <TouchableOpacity style={styles.container}>
+          <Text numberOfLines={1} style={styles.title}>
+            HIHIHI
+          </Text>
+          <Text numberOfLines={3} style={styles.desc}>
+            HIHIHIHIHIH
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
       <TouchableOpacity
         style={styles.float}

@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { IconButton, Colors } from 'react-native-paper';
-
-const UselessTextInput = (prop) => {
-  return <TextInput {...prop} editable maxLength={1000} />;
-};
+import api from '../api/list';
 
 const Write = () => {
+  const UselessTextInput = (prop) => {
+    return <TextInput {...prop} editable maxLength={1000} />;
+  };
+
   return (
     <ScrollView
       contentContainerStyle={{
