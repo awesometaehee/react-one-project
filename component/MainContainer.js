@@ -14,6 +14,9 @@ import Task from './Task';
 import Detail from './Detail';
 import { useDispatch } from 'react-redux';
 
+import messaging from '@react-native-firebase/messaging';
+import { Alert } from 'react-native';
+
 const Tab = createBottomTabNavigator();
 const HomeStack = createStackNavigator();
 const ListStack = createStackNavigator();
@@ -104,6 +107,21 @@ export default function Main() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_TASK' });
+  }, []);
+
+  useEffect(() => {
+    messaging()
+      .getToken()
+      .then((token) => {
+        console.log('--token--');
+        console.log(token);
+      });
+
+    const unsubscribe = messaging().onMessage(async (remoteMessage) => {
+      Alert.alert('A new FCM message arrived!', JSON.stringify(remoteMessage));
+    });
+
+    return unsubscribe;
   }, []);
 
   return (

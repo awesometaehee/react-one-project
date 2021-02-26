@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "274441838828",
+    "project_id": "notification-react-31d72",
+    "storage_bucket": "notification-react-31d72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:274441838828:android:3814177d3149cdef26c5c9",
+        "android_client_info": {
+          "package_name": "com.reactoneproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "274441838828-pjajmbgfcgv7mv67tep2tu4kjes8beek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB0htczFUGcl5H9u5xclLbzZP5K1YXnqp0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "274441838828-pjajmbgfcgv7mv67tep2tu4kjes8beek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
