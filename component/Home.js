@@ -28,7 +28,7 @@ const home = ({ navigation }) => {
             HIHIHI
           </Text>
           <Text numberOfLines={3} style={styles.desc}>
-            HIHIHIHIHIH
+            HIHIHIHIHIH2323
           </Text>
         </TouchableOpacity>
       </ScrollView>
