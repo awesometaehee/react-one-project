@@ -5,14 +5,25 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import Swipeable from 'react-native-gesture-handler/Swipeable';
-import DeleteButton from './DeleteButton';
-import Write from './Write';
 
 const home = ({ navigation }) => {
-  const [item, setItem] = useState({});
+  const data = [
+    {
+      title: '1111',
+      desc: '안녕안녕안녕안녕안녕안녕안녕',
+    },
+    {
+      title: '2222',
+      desc: '안녕안녕안녕안녕안녕안녕안녕',
+    },
+    {
+      title: '33333',
+      desc: '안녕안녕안녕안녕안녕안녕안녕',
+    },
+  ];
 
   return (
     <View style={{ flex: 1 }}>
@@ -20,22 +31,25 @@ const home = ({ navigation }) => {
         contentContainerStyle={{
           marginTop: 20,
           flexGrow: 1,
-          alignItems: 'center',
+          flexDirection: 'row',
+          flexWrap: 'wrap',
         }}
       >
-        <TouchableOpacity style={styles.container}>
-          <Text numberOfLines={1} style={styles.title}>
-            HIHIHI
-          </Text>
-          <Text numberOfLines={3} style={styles.desc}>
-            HIHIHIHIHIH2323
-          </Text>
-        </TouchableOpacity>
+        {data.map((item, index) => (
+          <TouchableOpacity style={styles.container} key={index}>
+            <Text numberOfLines={1} style={styles.title}>
+              {item.title}
+            </Text>
+            <Text numberOfLines={3} style={styles.desc}>
+              {item.desc}
+            </Text>
+          </TouchableOpacity>
+        ))}
       </ScrollView>
       <TouchableOpacity
         style={styles.float}
         onPress={() => {
-          navigation.navigate('Write');
+          console.log('HIHIHIHI');
         }}
       >
         <ImageBackground
@@ -49,9 +63,11 @@ const home = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    width: '90%',
-    padding: 20,
+    width: Dimensions.get('window').width / 2 - 15,
+    height: Dimensions.get('window').width / 2 - 15,
+    padding: 10,
     marginBottom: 10,
+    marginLeft: 10,
     backgroundColor: '#fff',
     shadowColor: '#222',
     shadowOffset: {
