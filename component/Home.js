@@ -13,15 +13,18 @@ const home = ({ navigation }) => {
   const data = [
     {
       title: '1111',
-      desc: '안녕안녕안녕안녕안녕안녕안녕',
+      desc:
+        "There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.",
     },
     {
       title: '2222',
-      desc: '안녕안녕안녕안녕안녕안녕안녕',
+      desc:
+        'Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.',
     },
     {
       title: '33333',
-      desc: '안녕안녕안녕안녕안녕안녕안녕',
+      desc:
+        'It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages',
     },
   ];
 
@@ -40,7 +43,7 @@ const home = ({ navigation }) => {
             <Text numberOfLines={1} style={styles.title}>
               {item.title}
             </Text>
-            <Text numberOfLines={3} style={styles.desc}>
+            <Text numberOfLines={6} style={styles.desc}>
               {item.desc}
             </Text>
           </TouchableOpacity>

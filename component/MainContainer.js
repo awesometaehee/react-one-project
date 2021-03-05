@@ -12,6 +12,7 @@ import List from './ListContainer';
 import Write from './Write';
 import Task from './Task';
 import Detail from './Detail';
+import HWTest from './HWTest';
 import { useDispatch } from 'react-redux';
 
 import messaging from '@react-native-firebase/messaging';
@@ -91,6 +92,9 @@ const screenOptions = ({ route }) => ({
       case 'add':
         iconName = focused ? 'file-tray-full' : 'file-tray-full-outline';
         break;
+      case 'HWTest':
+        iconName = focused ? 'location' : 'location-outline';
+        break;
     }
 
     return <Ionicons name={iconName} size={size} color={color} />;
@@ -109,6 +113,7 @@ export default function Main() {
     dispatch({ type: 'FETCH_TASK' });
   }, []);
 
+  // FCM token 가져오기
   useEffect(() => {
     messaging()
       .getToken()
@@ -134,6 +139,7 @@ export default function Main() {
           <Tab.Screen name="home" component={HomeStackScreen} />
           <Tab.Screen name="story" component={ListStackScreen} />
           <Tab.Screen name="add" component={TaskStackScreen} />
+          <Tab.Screen name="HWTest" component={HWTest} />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>
