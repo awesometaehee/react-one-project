@@ -33,13 +33,6 @@ const HomeStackScreen = () => {
           title: 'Home',
         }}
       />
-      <HomeStack.Screen
-        name="Write"
-        component={Write}
-        options={{
-          title: 'Your Story',
-        }}
-      />
     </HomeStack.Navigator>
   );
 };
@@ -56,6 +49,11 @@ const ListStackScreen = () => {
         name="Detail"
         component={Detail}
         options={{ title: 'Details' }}
+      />
+      <ListStack.Screen
+        name="Write"
+        component={Write}
+        options={{ title: 'Write' }}
       />
     </ListStack.Navigator>
   );

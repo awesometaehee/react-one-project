@@ -1,10 +1,20 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Button } from 'react-native';
+import { View, TextInput, StyleSheet } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import { IconButton, Colors } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 import api from '../api/list';
 
 const Write = () => {
+  const [written, setWritten] = useState('');
+
+  const postWritten = useCallback(async () => {
+    const result = await api.post(written);
+    console.log(result.data);
+    setWritten(result.data);
+  });
+
+  useEffect(() => {});
+
   const UselessTextInput = (prop) => {
     return <TextInput {...prop} editable maxLength={1000} />;
   };
@@ -19,7 +29,11 @@ const Write = () => {
     >
       <View style={styles.container}>
         <View>
-          <TextInput placeholder="제목" style={styles.title} />
+          <TextInput
+            placeholder="제목"
+            style={styles.title}
+            onChangeText={(text) => postWritten(text)}
+          />
           <UselessTextInput
             placeholder="내용을 입력하세요"
             multiline
@@ -32,7 +46,7 @@ const Write = () => {
             icon="check"
             size={30}
             color="#28bd8b"
-            onPress={() => alert('Complete')}
+            onPress={() => {}}
             style={{ marginLeft: 'auto' }}
           />
         </View>

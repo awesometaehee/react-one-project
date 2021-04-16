@@ -10,4 +10,6 @@ export default {
   search: (keyword) => axios.get(`${baseUrl}/list?q=${keyword}`),
   // PUT http://....:3000/list/:id
   put: (id) => axios.put(`${baseUrl}/list/${id}`),
+  // POST http://....:3000/list
+  post: (text) => axios.post(`${baseUrl}/list`, text),
 };
