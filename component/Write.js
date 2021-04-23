@@ -5,7 +5,7 @@ import { IconButton } from 'react-native-paper';
 import api from '../api/list';
 
 const Write = () => {
-  const [written, setWritten] = useState('');
+  const [written, setWritten] = useState({});
 
   const postWritten = useCallback(async () => {
     const result = await api.post(written);

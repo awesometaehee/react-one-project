@@ -5,6 +5,7 @@ import {
   Text,
   ImageBackground,
   TouchableOpacity,
+  Dimensions,
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 
@@ -16,6 +17,7 @@ const List = ({ navigation, list }) => {
           marginTop: 20,
           flexGrow: 1,
           alignItems: 'center',
+          height: Dimensions.get('window').height,
         }}
       >
         {list.map((item, i) => (
